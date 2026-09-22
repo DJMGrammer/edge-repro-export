@@ -4,6 +4,7 @@ import { extname, join, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(fileURLToPath(new URL('.', import.meta.url)), 'dist');
+const pagesBase = '/edge-repro-export';
 const types = {
     '.html': 'text/html; charset=utf-8',
     '.js': 'text/javascript; charset=utf-8',
@@ -25,7 +26,7 @@ createServer(async (req, res) => {
     if (req.method === 'PATCH') {
         res.writeHead(303, {
             'Set-Cookie': 'repro_step=2; Path=/; SameSite=Lax',
-            Location: '/',
+            Location: `${pagesBase}/`,
         });
         res.end();
 
@@ -33,7 +34,11 @@ createServer(async (req, res) => {
     }
 
     const pathname = decodeURIComponent(url.pathname);
-    const relative = pathname === '/' ? 'index.html' : pathname.slice(1);
+    const stripped =
+        pathname === pagesBase || pathname.startsWith(`${pagesBase}/`)
+            ? pathname.slice(pagesBase.length) || '/'
+            : pathname;
+    const relative = stripped === '/' ? 'index.html' : stripped.slice(1);
     const file = join(root, relative);
 
     if (!insideRoot(file)) {

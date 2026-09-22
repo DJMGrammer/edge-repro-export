@@ -554,7 +554,7 @@ function useLocalOrderForm(initial: OrderFormData) {
                 return;
             }
 
-            window.location.assign('/');
+            window.location.assign(import.meta.env.BASE_URL);
         },
     };
 }
@@ -625,7 +625,7 @@ export function OrderEditForm({
         event.preventDefault();
 
         form.transform((data) => serializeOrderForm(data));
-        void form.patch(submitUrl ?? '/');
+        void form.patch(submitUrl ?? import.meta.env.BASE_URL);
     }
 
     return (

@@ -15,7 +15,7 @@ function readStep(): 1 | 2 {
 
 function startOver() {
     document.cookie = 'repro_step=; Path=/; Max-Age=0';
-    window.location.assign('/');
+    window.location.assign(import.meta.env.BASE_URL);
 }
 
 export default function App() {
@@ -50,7 +50,7 @@ export default function App() {
                     order={selectedOrder}
                     campaigns={campaigns}
                     users={users}
-                    submitUrl="/"
+                    submitUrl={import.meta.env.BASE_URL}
                     onOpenChange={(open) => {
                         if (!open) {
                             setSelectedOrder(null);

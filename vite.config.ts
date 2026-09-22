@@ -4,14 +4,20 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
 
+const pagesBase = '/edge-repro-export/';
+
 function reproStep(): Plugin {
     return {
         name: 'repro-step',
         configureServer(server) {
             server.middlewares.use((req, res, next) => {
                 const url = req.url?.split('?')[0];
+                const isAppRoot =
+                    url === '/' ||
+                    url === pagesBase ||
+                    url === pagesBase.slice(0, -1);
 
-                if (req.method !== 'PATCH' || url !== '/') {
+                if (req.method !== 'PATCH' || !isAppRoot) {
                     next();
 
                     return;
@@ -22,7 +28,7 @@ function reproStep(): Plugin {
                     'Set-Cookie',
                     'repro_step=2; Path=/; SameSite=Lax',
                 );
-                res.setHeader('Location', '/');
+                res.setHeader('Location', pagesBase);
                 res.end();
             });
         },
@@ -30,6 +36,7 @@ function reproStep(): Plugin {
 }
 
 export default defineConfig({
+    base: pagesBase,
     plugins: [
         react({
             babel: {
