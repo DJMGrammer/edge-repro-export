@@ -13,9 +13,9 @@ npm run dev
 
 Open the printed local URL in Edge. Suggestions belong to that origin, so a save on another host will not fill this page.
 
-1. On EX-1001, type a plant city and a ship-to, then Save order.
+1. On EX-1001, type a assignee name then Save order.
 2. The page returns on EX-1002 with those fields empty.
-3. Focus Plant city and hover the suggestion from EX-1001. Do not click it.
+3. Focus Assignee and hover the suggestion from EX-1001. Here it might fail by just hovering after 5ish seconds. If not attempt to click and autofill information. 
 
 Start over clears the step cookie.
 
