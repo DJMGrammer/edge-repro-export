@@ -1,0 +1,229 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/inter';
+
+@source '.';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans: 'Inter Variable', sans-serif;
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-link: var(--link);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chip-work: var(--chip-work);
+    --color-chip-work-foreground: var(--chip-work-foreground);
+    --color-chip-progress: var(--chip-progress);
+    --color-chip-progress-foreground: var(--chip-progress-foreground);
+    --color-chip-done: var(--chip-done);
+    --color-chip-done-foreground: var(--chip-done-foreground);
+    --color-chip-quiet: var(--chip-quiet);
+    --color-chip-quiet-foreground: var(--chip-quiet-foreground);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+    --font-heading: var(--font-sans);
+
+    --duration-fast: var(--motion-fast);
+    --duration-base: var(--motion-base);
+    --duration-slow: var(--motion-slow);
+    --ease-motion: var(--motion-ease);
+}
+
+:root {
+    --radius: 0.625rem;
+    color-scheme: light;
+
+    /* Warm stone (~85). Canvas is cream, not white. */
+    --background: oklch(0.971 0.003 85);
+    --foreground: oklch(0.329 0.011 92);
+    --card: oklch(0.985 0.002 85);
+    --card-foreground: oklch(0.329 0.011 92);
+    --popover: oklch(0.985 0.002 85);
+    --popover-foreground: oklch(0.329 0.011 92);
+
+    /* Teal fill for the primary button. Links are a different blue. */
+    --primary: oklch(0.52 0.09 193);
+    --primary-foreground: oklch(0.985 0.008 90);
+    --link: oklch(0.5 0.12 254);
+    --secondary: oklch(0.93 0.01 80);
+    --secondary-foreground: oklch(0.329 0.011 92);
+    --muted: oklch(0.93 0.01 80);
+    --muted-foreground: oklch(0.5 0.01 90);
+    --accent: oklch(0.93 0.01 80);
+    --accent-foreground: oklch(0.329 0.011 92);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+
+    /* Hairline must read on cream. Inputs sit one step stronger. Ring = CTA. */
+    --border: oklch(0.9 0.008 85);
+    --input: oklch(0.822 0.009 78);
+    --ring: oklch(0.52 0.09 193);
+
+    /* Status chips: tint fill + deep text. Work is sky so Open ≠ brand teal. */
+    --chip-work: oklch(0.93 0.03 244);
+    --chip-work-foreground: oklch(0.38 0.08 250);
+    --chip-progress: oklch(0.93 0.05 70);
+    --chip-progress-foreground: oklch(0.4 0.09 55);
+    --chip-done: oklch(0.93 0.04 155);
+    --chip-done-foreground: oklch(0.35 0.08 155);
+    --chip-quiet: oklch(0.925 0.012 85);
+    --chip-quiet-foreground: oklch(0.42 0.015 85);
+    --chart-1: oklch(0.879 0.169 91.605);
+    --chart-2: oklch(0.769 0.188 70.08);
+    --chart-3: oklch(0.666 0.179 58.318);
+    --chart-4: oklch(0.555 0.163 48.998);
+    --chart-5: oklch(0.473 0.137 46.201);
+    --sidebar: oklch(0.971 0.003 85);
+    --sidebar-foreground: oklch(0.329 0.011 92);
+    --sidebar-primary: oklch(0.52 0.09 193);
+    --sidebar-primary-foreground: oklch(0.985 0.008 90);
+    --sidebar-accent: oklch(0.93 0.01 80);
+    --sidebar-accent-foreground: oklch(0.329 0.011 92);
+    --sidebar-border: oklch(0.9 0.008 85);
+    --sidebar-ring: oklch(0.52 0.09 193);
+
+    /* Motion: 100 / 200 / 300ms, one ease-in-out. Chrome only. */
+    --motion-fast: 100ms;
+    --motion-base: 200ms;
+    --motion-slow: 300ms;
+    --motion-ease: cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --motion-fast: 0ms;
+        --motion-base: 0ms;
+        --motion-slow: 0ms;
+    }
+}
+
+/* Named duration/ease utilities. @theme --duration-* with var() is not a [duration] value, so the built-in duration-* generator skips them. */
+@utility duration-fast {
+    --tw-duration: var(--motion-fast);
+    transition-duration: var(--motion-fast);
+    animation-duration: var(--motion-fast);
+}
+
+@utility duration-base {
+    --tw-duration: var(--motion-base);
+    transition-duration: var(--motion-base);
+    animation-duration: var(--motion-base);
+}
+
+@utility duration-slow {
+    --tw-duration: var(--motion-slow);
+    transition-duration: var(--motion-slow);
+    animation-duration: var(--motion-slow);
+}
+
+@utility ease-motion {
+    --tw-ease: var(--motion-ease);
+    transition-timing-function: var(--motion-ease);
+    animation-timing-function: var(--motion-ease);
+}
+
+.dark {
+    color-scheme: dark;
+
+    /* Same stone hue as light. L compressed off black so hairlines and hover still exist. */
+    --background: oklch(0.18 0.008 85);
+    --foreground: oklch(0.9 0.012 90);
+    --card: oklch(0.235 0.008 85);
+    --card-foreground: var(--foreground);
+    --popover: oklch(0.235 0.008 85);
+    --popover-foreground: var(--foreground);
+
+    /* Lighten the CTA (do not darken). Dark text on the fill — pair flip. Link keeps hue 254. */
+    --primary: oklch(0.72 0.078 193);
+    --primary-foreground: oklch(0.22 0.025 193);
+    --link: oklch(0.78 0.1 254);
+    --secondary: oklch(0.275 0.012 80);
+    --secondary-foreground: var(--foreground);
+    --muted: oklch(0.275 0.012 80);
+    --muted-foreground: oklch(0.74 0.012 90);
+    --accent: oklch(0.275 0.012 80);
+    --accent-foreground: var(--foreground);
+    --destructive: oklch(0.7 0.18 27);
+    --destructive-foreground: var(--destructive);
+
+    /* Hairline is a warm lift, not cool white. Input one step stronger. Ring = CTA. */
+    --border: oklch(0.9 0.01 85 / 18%);
+    --input: oklch(0.9 0.01 85 / 28%);
+    --ring: var(--primary);
+
+    /* Chip jobs unchanged: sky / peach / mint / stone. Fill down, text up, chroma down. */
+    --chip-work: oklch(0.32 0.04 244);
+    --chip-work-foreground: oklch(0.86 0.06 250);
+    --chip-progress: oklch(0.33 0.045 70);
+    --chip-progress-foreground: oklch(0.88 0.07 60);
+    --chip-done: oklch(0.31 0.04 155);
+    --chip-done-foreground: oklch(0.86 0.06 155);
+    --chip-quiet: oklch(0.28 0.012 85);
+    --chip-quiet-foreground: oklch(0.8 0.014 85);
+
+    --chart-1: oklch(0.72 0.06 85);
+    --chart-2: oklch(0.64 0.07 70);
+    --chart-3: oklch(0.58 0.07 55);
+    --chart-4: oklch(0.52 0.06 50);
+    --chart-5: oklch(0.46 0.05 46);
+
+    --sidebar: var(--background);
+    --sidebar-foreground: var(--foreground);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+    html {
+        @apply font-sans;
+    }
+}
